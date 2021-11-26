@@ -1,0 +1,19 @@
+{
+    "testFiles": "**/*.feature",
+    "baseUrl": "https://development.evident.capital/", 
+    "fixturesFolder": "cypress/fixtures",
+    "integrationFolder": "cypress/integration",
+    "downloadsFolder": "cypress/downloads",
+    "pluginsFile": "cypress/plugins/index.js",
+    "supportFile": "cypress/support/index.js",
+    "ignoreTestFiles": "*.js",
+    "reporter": "mochawesome",
+    "reporterOptions": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports"
+    }
+    
+
+}

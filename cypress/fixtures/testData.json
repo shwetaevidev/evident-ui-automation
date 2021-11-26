@@ -1,0 +1,9 @@
+{
+    "RiskText": "I understand that I can lose the money I'm investing",
+    "DiversificationText": "I understand that it's safer to split money across many investments and asset classes",
+    "LimitedTransferText": "I understand that it may be difficult to trade and transfer my investments",
+    "CancellationText": "I understand that I can't cancel a transaction after completion or unwind a trade",
+    "Limits": "I understand that I can't invest more than my limits allow",
+    "Research": "I understand that doing research is my own responsibility",
+    "Account":"Account"
+}
