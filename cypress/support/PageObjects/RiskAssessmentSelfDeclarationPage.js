@@ -29,13 +29,12 @@ class RiskAssessmentSelfDeclarationPage {
    }
 
    getToggles(){
-      // return cy.dataCy('risk-toggle')
       return cy.xpath("//div[@class='q-toggle__thumb absolute flex flex-center no-wrap']")
+
    }
 
    getRiskToggle(){
       return cy.dataCy('risk-toggle')
-
    }
 
    getDiversification(){
@@ -58,13 +57,64 @@ class RiskAssessmentSelfDeclarationPage {
       return cy.dataCy('research-toggle')
    }
 
-   getProceed(){
+   disabledProceedBtn(){
+      return cy.xpath("//button[@class[contains(.,'disabled')]]")
+   }
+
+   enabledProceedBtn(){
+      return cy.xpath("//button[@class[contains(.,'q-btn--active')]]")
+   }
+
+     getProceed(){
       return cy.dataCy('risk-submit-btn')
    }
 
    getAccount(){
       return cy.get('.router-link-active')
    }
+
+   getProfileIcon(){
+      return cy.get('span.q-ml-xs.text-primary')
+   }
+
+   getWatchListIcon(){
+      return cy.get('span.q-ml-xs.text-secondary')
+   }
+
+   getHeaderNotificationBtn(){
+      return cy.dataCy('header-notifications-btn')
+   }
+
+   getProfileIcon(){
+      return cy.get('.q-btn__content .q-img__image')
+   }
+
+   getAccountsBtn(){
+      return cy.dataCy('header-account-btn')
+   }
+
+   getOnBoardingSteps(value){
+      return cy.xpath("//a[contains(.,'"+value+"')]")
+   }
+
+   getProfile(){
+      return cy.xpath("//a[contains(.,'Profile')]")
+   }
+   
+   getPersonalInfo(){
+
+      return cy.xpath("//a[contains(.,'Personal info')]")
+   }
+
+   getWealth(){
+      return cy.xpath("//a[contains(.,'Wealth')]")
+   }
+
+   getExperience(){
+      return cy.xpath("//a[contains(.,'Experience')]")
+   }
+
+  
    
 }
 export default RiskAssessmentSelfDeclarationPage

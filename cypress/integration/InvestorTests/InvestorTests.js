@@ -52,17 +52,27 @@ And(/^Investor validates Research on Risk assessment - Self declaration text$/, 
 });
 
 Then(/^Investor clicks toggles$/, () => {
-	riskAssessmentSelfDeclarationPage.getToggles().click({ multiple: true })
+
 	riskAssessmentSelfDeclarationPage.getRiskToggle().should('have.text', testData.RiskText)
 	riskAssessmentSelfDeclarationPage.getDiversification().should('have.text', testData.DiversificationText)
 	riskAssessmentSelfDeclarationPage.getLimitedTransfer().should('have.text', testData.LimitedTransferText)
 	riskAssessmentSelfDeclarationPage.getCancellation().should('have.text', testData.CancellationText)
 	riskAssessmentSelfDeclarationPage.getLimits().should('have.text', testData.Limits)
 	riskAssessmentSelfDeclarationPage.getReasearch().should('have.text', testData.Research)
+	riskAssessmentSelfDeclarationPage.getToggles().wait(1000).click({ multiple: true })
+
+
 });
 
 Then(/^User clicks Proceed button$/, () => {
-	riskAssessmentSelfDeclarationPage.getProceed().click()
+	riskAssessmentSelfDeclarationPage.getProceed().then((x) => {
+		   if (x.is("disabled")) {
+		      riskAssessmentSelfDeclarationPage.getToggles().click({ multiple: true })      
+		   }else{
+			riskAssessmentSelfDeclarationPage.getProceed().click({ force: true }).wait(500)
+		   }   
+		 });
+	
 });
 
 And(/^User is navigated to Accounts Page$/, () => {
@@ -77,4 +87,21 @@ Then(/^User is brought to market place$/, () => {
 	cy.url().should('eq', 'https://development.evident.capital/market-place')
 	cy.url().should('include', '/market-place')
 });
+
+And(/^User should be able to validate the Header notification$/, () => {
+	riskAssessmentSelfDeclarationPage.getHeaderNotificationBtn().should('be.visible')
+});
+
+And(/^User should be able to validate the profile icon and clicks the profile icon$/, () => {
+	riskAssessmentSelfDeclarationPage.getProfileIcon().should('be.visible')
+	riskAssessmentSelfDeclarationPage.getProfileIcon().click()
+	riskAssessmentSelfDeclarationPage.getAccountsBtn().click()	
+});
+
+Then(/^User validates (.*) and (.*) on the accounts Page$/, (onboarding,attribute) => {
+	riskAssessmentSelfDeclarationPage.getOnBoardingSteps(onboarding).should("have.attr", "href", attribute);
+});
+
+
+
 

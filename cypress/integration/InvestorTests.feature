@@ -19,10 +19,21 @@ Feature: Login with an Investor account and select the toggles on Risk Declarati
         Then User clicks Proceed button
         And User is navigated to Accounts Page
         
-    #Scenario1
-    Scenario: User should be brought to market place on login
+    #Scenario2
+    Scenario Outline: User should be brought to market place on login
         Given I navigate to Investor Portal to login as an Investor
         Then User is brought to market place
+        And User should be able to validate the Header notification
+        And User should be able to validate the profile icon and clicks the profile icon
+        Then User validates <OnboardingSteps> and <AttributeValue> on the accounts Page
+        Examples:
+        | OnboardingSteps | AttributeValue      |
+        | Profile         | /user/profile       |
+        | Personal info   | /user/personal-info |
+        | Wealth          | /user/wealth        |
+        | Experience      | /user/experience       |
+
+
 
 
 
